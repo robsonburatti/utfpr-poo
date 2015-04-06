@@ -5,6 +5,9 @@
  */
 package br.edu.utfpr.view;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author root
@@ -27,21 +30,86 @@ public class FrmLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelNome = new javax.swing.JLabel();
+        jTextFieldNome = new javax.swing.JTextField();
+        jLabelSenha = new javax.swing.JLabel();
+        jPasswordFieldSenha = new javax.swing.JPasswordField();
+        jButtonAcessar = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabelNome.setText("Informe o Nome");
+
+        jLabelSenha.setText("Informe o Senha");
+
+        jButtonAcessar.setText("Acessar");
+        jButtonAcessar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAcessarMouseClicked(evt);
+            }
+        });
+
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonCancelarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelNome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldNome))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelSenha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPasswordFieldSenha))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonAcessar, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNome)
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelSenha))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAcessar)
+                    .addComponent(jButtonCancelar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAcessarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAcessarMouseClicked
+        // TODO add your handling code here:
+        // Direciona para o método que efetua a ação de executar o acesso ao sistema
+        onClickedAcessar();
+    }//GEN-LAST:event_jButtonAcessarMouseClicked
+
+    private void jButtonCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMouseClicked
+        // TODO add your handling code here:
+        // Direciona par o método que efetua a ação de executar o cancelamento do acesso ao sistema
+        onClickedCancelar();
+    }//GEN-LAST:event_jButtonCancelarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -79,5 +147,64 @@ public class FrmLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAcessar;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JLabel jLabelNome;
+    private javax.swing.JLabel jLabelSenha;
+    private javax.swing.JPasswordField jPasswordFieldSenha;
+    private javax.swing.JTextField jTextFieldNome;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Método que executa a ação do botão "Acessar"
+     */
+    private void onClickedAcessar() {
+        String nome = "";
+        String senha = "";
+        
+        // Atribui para as variáveis o valor infomado nas caixa de texto
+        nome = jTextFieldNome.getText();
+        senha = jPasswordFieldSenha.getText();
+        
+        // Efetua o teste se os valores informados pelo usuário são:
+        // para o nome de usuário deve ser igual a "admin"
+        // para a senha deve ser igual a "123"
+        // Caso for verdadeiro acessa a tela de cadastro
+        // Caso contrário informa ao usuário que a o usuário ou a senha estão incorretos e limpa os campos para uma nova digitação
+        if ((nome.equals("admin")) && (senha.equals("123"))) {
+            // Apresenta a mensagem que "Acessou o sistema com sucesso!"
+            JOptionPane.showMessageDialog(null, "Acessou o sistema com sucesso!");
+            
+            // Instância a tela de cadastro
+            FrmCadastro frmCadastro = new FrmCadastro();
+            
+            // Atribui para a tela de cadastro as propriedades necessárias para habilitar o botão  de fechar padrão das telas (o botão "X" de fechar)
+            frmCadastro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            
+            // Atribui para a tela de cadastro que seja apresentada no centro da tela
+            frmCadastro.setLocationRelativeTo(null);
+            
+            // Atribui para a tela de cadastro que seja visível para o usuário
+            frmCadastro.setVisible(true);
+            
+            // Executa a ação de fechar a tela atual neste caso a tela de login (FrmLogin)
+            this.dispose();
+            
+        } else {
+            // Apresenta ao usuário a mensagem "Usuário ou senha inválida!" informando que o nome de usuário ou a senha estão inválidos
+            JOptionPane.showMessageDialog(null, "Usuário ou senha inválida!");
+            
+            // Efetua a limpeza dos campos do nome de usuário e da senha para que seja informado novos valores
+            jTextFieldNome.setText("");
+            jPasswordFieldSenha.setText("");
+        }
+    }
+
+    /**
+     * Método que executa a ação do botão "Cancelar"
+     */
+    private void onClickedCancelar() {
+        // Executa a ação de fechar a tela atual neste caso a tela de login (FrmLogin)
+        this.dispose();
+    }
 }
