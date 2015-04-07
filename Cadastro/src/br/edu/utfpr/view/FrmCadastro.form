@@ -28,47 +28,40 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabelNome" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jTextFieldNome" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jScrollPane1" alignment="0" pref="376" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelNome" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelOcupacao" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextFieldNome" max="32767" attributes="0"/>
+                              <Component id="jCheckBoxEstudante" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabelOcupacao" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jCheckBoxEstudante" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelSexo" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jRadioButtonMasculino" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jRadioButtonFeminino" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jLabelComentario" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabelSexo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jRadioButtonMasculino" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jRadioButtonFeminino" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabelComentario" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jButtonGravar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButtonLimpar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButtonCancelar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="meuComponente" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-                      <Component id="jButtonGravar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonLimpar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonCancelar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="76" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -88,7 +81,7 @@
                   <Component id="jLabelOcupacao" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jCheckBoxEstudante" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelSexo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jRadioButtonMasculino" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -97,12 +90,15 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabelComentario" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="132" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="126" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButtonGravar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButtonGravar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="meuComponente" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -186,5 +182,7 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="br.edu.utfpr.view.componentes.MeuComponente" name="meuComponente">
+    </Component>
   </SubComponents>
 </Form>
