@@ -5,6 +5,8 @@
  */
 package br.edu.utfpr.view;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author root
@@ -16,6 +18,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
      */
     public FrmPrincipal() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -27,58 +30,99 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonAbrirTela = new javax.swing.JButton();
-        jButtonCadastro = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuArquivo = new javax.swing.JMenu();
+        jMenuItemSalvarArquivo = new javax.swing.JMenuItem();
+        jMenuItemSalvarBanco = new javax.swing.JMenuItem();
+        jMenuItemConfiguracoes = new javax.swing.JMenuItem();
+        jMenuItemFechar = new javax.swing.JMenuItem();
+        jMenuCadastro = new javax.swing.JMenu();
+        jMenuItemClienteArquivo = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuRelatorio = new javax.swing.JMenu();
+        jMenuItemListaClienteArquivo = new javax.swing.JMenuItem();
+        jMenuItemListaClienteBanco = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButtonAbrirTela.setText("Abrir Tela");
-        jButtonAbrirTela.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonAbrirTelaMouseClicked(evt);
-            }
-        });
+        jMenuArquivo.setText("Arquivo");
 
-        jButtonCadastro.setText("Cadastro");
-        jButtonCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonCadastroMouseClicked(evt);
+        jMenuItemSalvarArquivo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemSalvarArquivo.setText("Salvar Arquivo");
+        jMenuArquivo.add(jMenuItemSalvarArquivo);
+
+        jMenuItemSalvarBanco.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemSalvarBanco.setText("Salvar Banco");
+        jMenuArquivo.add(jMenuItemSalvarBanco);
+
+        jMenuItemConfiguracoes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemConfiguracoes.setText("Configuração");
+        jMenuArquivo.add(jMenuItemConfiguracoes);
+
+        jMenuItemFechar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemFechar.setText("Fechar");
+        jMenuItemFechar.setToolTipText("Finaliza o sistema");
+        jMenuItemFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFecharActionPerformed(evt);
             }
         });
+        jMenuArquivo.add(jMenuItemFechar);
+
+        jMenuBar1.add(jMenuArquivo);
+
+        jMenuCadastro.setText("Cadastro");
+
+        jMenuItemClienteArquivo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemClienteArquivo.setText("Cliente Arquivo");
+        jMenuItemClienteArquivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemClienteArquivoActionPerformed(evt);
+            }
+        });
+        jMenuCadastro.add(jMenuItemClienteArquivo);
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem1.setText("Cliente Banco");
+        jMenuCadastro.add(jMenuItem1);
+
+        jMenuBar1.add(jMenuCadastro);
+
+        jMenuRelatorio.setText("Relatório");
+
+        jMenuItemListaClienteArquivo.setText("Lista Cliente Arquivo");
+        jMenuRelatorio.add(jMenuItemListaClienteArquivo);
+
+        jMenuItemListaClienteBanco.setText("Lista Cliente Banco");
+        jMenuRelatorio.add(jMenuItemListaClienteBanco);
+
+        jMenuBar1.add(jMenuRelatorio);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonAbrirTela)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonCadastro)
-                .addContainerGap(235, Short.MAX_VALUE))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAbrirTela)
-                    .addComponent(jButtonCadastro))
-                .addContainerGap(260, Short.MAX_VALUE))
+            .addGap(0, 279, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonAbrirTelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAbrirTelaMouseClicked
+    private void jMenuItemFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFecharActionPerformed
         // TODO add your handling code here:
-        onClickedAbrirTela();
-    }//GEN-LAST:event_jButtonAbrirTelaMouseClicked
+        onClickedFechar();
+    }//GEN-LAST:event_jMenuItemFecharActionPerformed
 
-    private void jButtonCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCadastroMouseClicked
+    private void jMenuItemClienteArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteArquivoActionPerformed
         // TODO add your handling code here:
-        onClickedCadastro();
-    }//GEN-LAST:event_jButtonCadastroMouseClicked
+        onClickedClienteArquivo();
+    }//GEN-LAST:event_jMenuItemClienteArquivoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,18 +160,31 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAbrirTela;
-    private javax.swing.JButton jButtonCadastro;
+    private javax.swing.JMenu jMenuArquivo;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuCadastro;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemClienteArquivo;
+    private javax.swing.JMenuItem jMenuItemConfiguracoes;
+    private javax.swing.JMenuItem jMenuItemFechar;
+    private javax.swing.JMenuItem jMenuItemListaClienteArquivo;
+    private javax.swing.JMenuItem jMenuItemListaClienteBanco;
+    private javax.swing.JMenuItem jMenuItemSalvarArquivo;
+    private javax.swing.JMenuItem jMenuItemSalvarBanco;
+    private javax.swing.JMenu jMenuRelatorio;
     // End of variables declaration//GEN-END:variables
 
-    private void onClickedAbrirTela() {
+    /**
+     * Fecha o sistema
+     */
+    private void onClickedFechar() {
+        this.dispose();
+    }
+
+    private void onClickedClienteArquivo() {
         TelaInterna telaInterna = new TelaInterna();
         this.add(telaInterna);
         telaInterna.setVisible(true);
     }
 
-    private void onClickedCadastro() {
-        FrmCadastro frmCadastro = new FrmCadastro();
-        frmCadastro.setVisible(true);
-    }
 }
