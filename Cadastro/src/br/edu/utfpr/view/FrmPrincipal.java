@@ -5,6 +5,7 @@
  */
 package br.edu.utfpr.view;
 
+import br.edu.utfpr.view.cadastro.FrmCadastroArquivo;
 import javax.swing.JFrame;
 
 /**
@@ -182,9 +183,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     private void onClickedClienteArquivo() {
-        TelaInterna telaInterna = new TelaInterna();
-        this.add(telaInterna);
-        telaInterna.setVisible(true);
+//        TelaInterna telaInterna = new TelaInterna();
+//        this.add(telaInterna);
+//        telaInterna.setVisible(true);
+        FrmCadastroArquivo frmCadastroArquivo = new FrmCadastroArquivo();
+        this.add(frmCadastroArquivo);
+        frmCadastroArquivo.setVisible(true);
     }
 
 }
