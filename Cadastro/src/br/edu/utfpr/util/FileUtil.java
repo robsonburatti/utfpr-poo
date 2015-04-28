@@ -180,54 +180,6 @@ public class FileUtil {
         return toReturn.toString();
     }
 
-    private static void gravarDadosTXTInputStreamOutputStream(String dados) {
-        try {
-
-            InputStream is = new FileInputStream("arquivoEntrada.txt");
-            InputStreamReader isr = new InputStreamReader(is);
-            BufferedReader br = new BufferedReader(isr);
-
-            OutputStream os = new FileOutputStream("arquivoSaida.txt");
-            OutputStreamWriter osw = new OutputStreamWriter(os);
-            BufferedWriter bw = new BufferedWriter(osw);
-
-            String linha = br.readLine();
-            while (linha != null) {
-                bw.append(linha);
-                bw.newLine();
-                System.out.println(linha);
-                linha = br.readLine();
-            }
-            br.close();
-            bw.close();
-
-            // Cria o arquivo físico e o diretório se o mesmo tiver dirtórios deixando desta forma salvará o arquivo na pasta raíz do projeto ou onde estiver sendo executado a aplicação
-            FileWriter fileWriter = new FileWriter("myFolder.txt");
-
-            // Cria a instância de classe que vai escrever no arquivo passando para o construtor o arquivo que será manipulado
-            PrintWriter printWriter = new PrintWriter(fileWriter);
-
-            // Escrevendo no arquivo
-            printWriter.println(dados);
-
-            // Fecha a transmisão dos dados para o arquivo
-            printWriter.flush();
-
-            // Fecha o arquivo liberando para ser acessado por outra aplicação ou pelo próprio sistema
-            printWriter.close();
-
-            // Fecha a transmisão dos dados para o arquivo
-            fileWriter.flush();
-
-            // Fecha o arquivo liberando para ser acessado por outra aplicação ou pelo próprio sistema
-            fileWriter.close();
-
-        } catch (Exception e) {
-            System.err.println("Ocorreu erro na gravação do arquivo utilizando a classe FileWriter e PrintWrite");
-            e.printStackTrace();
-        }
-    }
-
     public static void main(String[] args) {
         //
     }
