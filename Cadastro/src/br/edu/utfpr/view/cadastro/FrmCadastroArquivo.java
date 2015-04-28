@@ -6,6 +6,7 @@
 package br.edu.utfpr.view.cadastro;
 
 import br.edu.utfpr.model.entity.Cliente;
+import br.edu.utfpr.util.FileUtil;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -46,8 +47,10 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
         jButtonGravarTXT = new javax.swing.JButton();
         jButtonGravarBIN = new javax.swing.JButton();
         jButtonGravarDB = new javax.swing.JButton();
+        jButtonGravarCSV = new javax.swing.JButton();
 
         setClosable(true);
+        setMaximizable(true);
         setTitle("Cadastro Arquivo");
 
         jLabelNome.setText("Nome");
@@ -77,6 +80,13 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
             }
         });
 
+        jButtonGravarCSV.setText("Gravar CSV");
+        jButtonGravarCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGravarCSVActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,24 +95,24 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelNome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldNome))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelEndereco)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelEmail)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonGravarTXT)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonGravarBIN)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonGravarDB)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonGravarCSV)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelEndereco)
+                            .addComponent(jLabelEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelNome, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldEmail)
+                            .addComponent(jTextFieldNome)
+                            .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -124,8 +134,9 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonGravarTXT)
                     .addComponent(jButtonGravarBIN)
-                    .addComponent(jButtonGravarDB))
-                .addContainerGap(141, Short.MAX_VALUE))
+                    .addComponent(jButtonGravarDB)
+                    .addComponent(jButtonGravarCSV))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,9 +157,15 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
         onClickedGravarDB();
     }//GEN-LAST:event_jButtonGravarDBActionPerformed
 
+    private void jButtonGravarCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarCSVActionPerformed
+        // TODO add your handling code here:
+        onClickedGravarCSV();
+    }//GEN-LAST:event_jButtonGravarCSVActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGravarBIN;
+    private javax.swing.JButton jButtonGravarCSV;
     private javax.swing.JButton jButtonGravarDB;
     private javax.swing.JButton jButtonGravarTXT;
     private javax.swing.JLabel jLabelEmail;
@@ -160,30 +177,23 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void onClickedGravarTXT() {
-        try {
-            String texto = getCliente();
-
-            File file = new File("myFolder.txt");
-            
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-            fileOutputStream.write(texto.getBytes());
-            
-            fileOutputStream.close();
-            fileOutputStream.flush();
-//            usar printStream
-            
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-        
+        setCliente();
+        FileUtil.gravarDadosTXT(getCliente());
     }
 
     private void onClickedGravarBIN() {
-        //
+        setCliente();
+        FileUtil.gravarDadosBIN(getCliente());
     }
 
     private void onClickedGravarDB() {
-        //
+        setCliente();
+        FileUtil.gravarDadoDB(getCliente());
+    }
+
+    private void onClickedGravarCSV() {
+        setCliente();
+        FileUtil.gravarDadosCSV(getCliente());
     }
     
     private void setCliente() {
@@ -200,4 +210,6 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
         
         return toReturn.toString();
     }
+    
+
 }
