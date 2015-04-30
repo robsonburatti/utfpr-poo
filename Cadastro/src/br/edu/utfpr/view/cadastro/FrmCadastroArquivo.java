@@ -7,11 +7,6 @@ package br.edu.utfpr.view.cadastro;
 
 import br.edu.utfpr.model.entity.Cliente;
 import br.edu.utfpr.util.FileUtil;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.OutputStream;
 
 /**
  *
@@ -188,7 +183,7 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
 
     private void onClickedGravarDB() {
         setCliente();
-        FileUtil.gravarDadoDB(getCliente());
+        FileUtil.gravarDadoDAT(getCliente());
     }
 
     private void onClickedGravarCSV() {
