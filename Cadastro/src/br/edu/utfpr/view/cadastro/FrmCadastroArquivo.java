@@ -41,8 +41,14 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
         jTextFieldEmail = new javax.swing.JTextField();
         jButtonGravarTXT = new javax.swing.JButton();
         jButtonGravarBIN = new javax.swing.JButton();
-        jButtonGravarDB = new javax.swing.JButton();
+        jButtonGravarDAT = new javax.swing.JButton();
         jButtonGravarCSV = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jButtonLerTXT = new javax.swing.JButton();
+        jButtonLerBIN = new javax.swing.JButton();
+        jButtonLerDAT = new javax.swing.JButton();
+        jButtonLerCSV = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -68,10 +74,10 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
             }
         });
 
-        jButtonGravarDB.setText("Gravar DB");
-        jButtonGravarDB.addActionListener(new java.awt.event.ActionListener() {
+        jButtonGravarDAT.setText("Gravar DAT");
+        jButtonGravarDAT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonGravarDBActionPerformed(evt);
+                jButtonGravarDATActionPerformed(evt);
             }
         });
 
@@ -82,6 +88,39 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
             }
         });
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jButtonLerTXT.setText("Ler TXT");
+        jButtonLerTXT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLerTXTActionPerformed(evt);
+            }
+        });
+
+        jButtonLerBIN.setText("Ler BIN");
+        jButtonLerBIN.setActionCommand("Ler BIN");
+        jButtonLerBIN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLerBINActionPerformed(evt);
+            }
+        });
+
+        jButtonLerDAT.setText("Ler DAT");
+        jButtonLerDAT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLerDATActionPerformed(evt);
+            }
+        });
+
+        jButtonLerCSV.setText("Ler CSV");
+        jButtonLerCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLerCSVActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,15 +128,7 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonGravarTXT)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonGravarBIN)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonGravarDB)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonGravarCSV)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelEndereco)
@@ -107,7 +138,23 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldEmail)
                             .addComponent(jTextFieldNome)
-                            .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE))))
+                            .addComponent(jTextFieldEndereco)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonGravarTXT)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonGravarBIN)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonGravarDAT)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonGravarCSV, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonLerTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonLerBIN, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonLerDAT, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonLerCSV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -129,9 +176,17 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonGravarTXT)
                     .addComponent(jButtonGravarBIN)
-                    .addComponent(jButtonGravarDB)
+                    .addComponent(jButtonGravarDAT)
                     .addComponent(jButtonGravarCSV))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonLerTXT)
+                    .addComponent(jButtonLerBIN)
+                    .addComponent(jButtonLerDAT)
+                    .addComponent(jButtonLerCSV))
+                .addContainerGap())
         );
 
         pack();
@@ -147,25 +202,47 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
         onClickedGravarBIN();
     }//GEN-LAST:event_jButtonGravarBINActionPerformed
 
-    private void jButtonGravarDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarDBActionPerformed
+    private void jButtonGravarDATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarDATActionPerformed
         // TODO add your handling code here:
         onClickedGravarDB();
-    }//GEN-LAST:event_jButtonGravarDBActionPerformed
+    }//GEN-LAST:event_jButtonGravarDATActionPerformed
 
     private void jButtonGravarCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarCSVActionPerformed
         // TODO add your handling code here:
         onClickedGravarCSV();
     }//GEN-LAST:event_jButtonGravarCSVActionPerformed
 
+    private void jButtonLerTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLerTXTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonLerTXTActionPerformed
+
+    private void jButtonLerBINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLerBINActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonLerBINActionPerformed
+
+    private void jButtonLerDATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLerDATActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonLerDATActionPerformed
+
+    private void jButtonLerCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLerCSVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonLerCSVActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGravarBIN;
     private javax.swing.JButton jButtonGravarCSV;
-    private javax.swing.JButton jButtonGravarDB;
+    private javax.swing.JButton jButtonGravarDAT;
     private javax.swing.JButton jButtonGravarTXT;
+    private javax.swing.JButton jButtonLerBIN;
+    private javax.swing.JButton jButtonLerCSV;
+    private javax.swing.JButton jButtonLerDAT;
+    private javax.swing.JButton jButtonLerTXT;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelEndereco;
     private javax.swing.JLabel jLabelNome;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldEndereco;
     private javax.swing.JTextField jTextFieldNome;

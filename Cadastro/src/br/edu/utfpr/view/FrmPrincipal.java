@@ -6,6 +6,7 @@
 package br.edu.utfpr.view;
 
 import br.edu.utfpr.view.cadastro.FrmCadastroArquivo;
+import br.edu.utfpr.view.cadastro.FrmCadastroListas;
 import javax.swing.JFrame;
 
 /**
@@ -40,11 +41,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jMenuCadastro = new javax.swing.JMenu();
         jMenuItemClienteArquivo = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemCadastroListas = new javax.swing.JMenuItem();
         jMenuRelatorio = new javax.swing.JMenu();
         jMenuItemListaClienteArquivo = new javax.swing.JMenuItem();
         jMenuItemListaClienteBanco = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tela Principal Do Sistema");
 
         jMenuArquivo.setText("Arquivo");
 
@@ -87,6 +90,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jMenuItem1.setText("Cliente Banco");
         jMenuCadastro.add(jMenuItem1);
 
+        jMenuItemCadastroListas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemCadastroListas.setText("Cadastro Listas");
+        jMenuItemCadastroListas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCadastroListasActionPerformed(evt);
+            }
+        });
+        jMenuCadastro.add(jMenuItemCadastroListas);
+
         jMenuBar1.add(jMenuCadastro);
 
         jMenuRelatorio.setText("Relatório");
@@ -124,6 +136,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         onClickedClienteArquivo();
     }//GEN-LAST:event_jMenuItemClienteArquivoActionPerformed
+
+    private void jMenuItemCadastroListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastroListasActionPerformed
+        // TODO add your handling code here:
+        onClickedCadastroListas();
+    }//GEN-LAST:event_jMenuItemCadastroListasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,6 +182,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastro;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemCadastroListas;
     private javax.swing.JMenuItem jMenuItemClienteArquivo;
     private javax.swing.JMenuItem jMenuItemConfiguracoes;
     private javax.swing.JMenuItem jMenuItemFechar;
@@ -189,6 +207,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         FrmCadastroArquivo frmCadastroArquivo = new FrmCadastroArquivo();
         this.add(frmCadastroArquivo);
         frmCadastroArquivo.setVisible(true);
+    }
+    
+    private void onClickedCadastroListas() {
+        FrmCadastroListas frmCadastroListas = new FrmCadastroListas();
+        this.add(frmCadastroListas);
+        frmCadastroListas.setVisible(true);
     }
 
 }
