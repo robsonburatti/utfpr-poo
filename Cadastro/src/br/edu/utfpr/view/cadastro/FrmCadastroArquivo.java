@@ -7,6 +7,7 @@ package br.edu.utfpr.view.cadastro;
 
 import br.edu.utfpr.model.entity.Cliente;
 import br.edu.utfpr.util.FileUtil;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -44,7 +45,7 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
         jButtonGravarDAT = new javax.swing.JButton();
         jButtonGravarCSV = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaDados = new javax.swing.JTextArea();
         jButtonLerTXT = new javax.swing.JButton();
         jButtonLerBIN = new javax.swing.JButton();
         jButtonLerDAT = new javax.swing.JButton();
@@ -88,11 +89,12 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextAreaDados.setColumns(20);
+        jTextAreaDados.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaDados);
 
         jButtonLerTXT.setText("Ler TXT");
+        jButtonLerTXT.setEnabled(false);
         jButtonLerTXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLerTXTActionPerformed(evt);
@@ -100,7 +102,7 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
         });
 
         jButtonLerBIN.setText("Ler BIN");
-        jButtonLerBIN.setActionCommand("Ler BIN");
+        jButtonLerBIN.setEnabled(false);
         jButtonLerBIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLerBINActionPerformed(evt);
@@ -108,6 +110,7 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
         });
 
         jButtonLerDAT.setText("Ler DAT");
+        jButtonLerDAT.setEnabled(false);
         jButtonLerDAT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLerDATActionPerformed(evt);
@@ -115,6 +118,7 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
         });
 
         jButtonLerCSV.setText("Ler CSV");
+        jButtonLerCSV.setEnabled(false);
         jButtonLerCSV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLerCSVActionPerformed(evt);
@@ -204,7 +208,7 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
 
     private void jButtonGravarDATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarDATActionPerformed
         // TODO add your handling code here:
-        onClickedGravarDB();
+        onClickedGravarDAT();
     }//GEN-LAST:event_jButtonGravarDATActionPerformed
 
     private void jButtonGravarCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarCSVActionPerformed
@@ -214,18 +218,22 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
 
     private void jButtonLerTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLerTXTActionPerformed
         // TODO add your handling code here:
+        onClickedLerTXT();
     }//GEN-LAST:event_jButtonLerTXTActionPerformed
 
     private void jButtonLerBINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLerBINActionPerformed
         // TODO add your handling code here:
+        onClickedLerBIN();
     }//GEN-LAST:event_jButtonLerBINActionPerformed
 
     private void jButtonLerDATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLerDATActionPerformed
         // TODO add your handling code here:
+        onClickedLerDAT();
     }//GEN-LAST:event_jButtonLerDATActionPerformed
 
     private void jButtonLerCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLerCSVActionPerformed
         // TODO add your handling code here:
+        onClickedLerCSV();
     }//GEN-LAST:event_jButtonLerCSVActionPerformed
 
 
@@ -242,7 +250,7 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelEndereco;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextAreaDados;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldEndereco;
     private javax.swing.JTextField jTextFieldNome;
@@ -251,21 +259,57 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
     private void onClickedGravarTXT() {
         setCliente();
         FileUtil.gravarDadosTXT(getCliente());
+        jButtonLerTXT.setEnabled(true);
+        limparCampos();
+        JOptionPane.showMessageDialog(this, "Arquivo gravado com sucesso!");
     }
 
     private void onClickedGravarBIN() {
         setCliente();
         FileUtil.gravarDadosBIN(getCliente());
+        jButtonLerBIN.setEnabled(true);
+        limparCampos();
+        JOptionPane.showMessageDialog(this, "Arquivo gravado com sucesso!");
     }
 
-    private void onClickedGravarDB() {
+    private void onClickedGravarDAT() {
         setCliente();
         FileUtil.gravarDadoDAT(getCliente());
+        jButtonLerDAT.setEnabled(true);
+        limparCampos();
+        JOptionPane.showMessageDialog(this, "Arquivo gravado com sucesso!");
     }
 
     private void onClickedGravarCSV() {
         setCliente();
         FileUtil.gravarDadosCSV(getCliente());
+        jButtonLerCSV.setEnabled(true);
+        limparCampos();
+        JOptionPane.showMessageDialog(this, "Arquivo gravado com sucesso!");
+    }
+    
+    private void onClickedLerTXT() {
+        String dados = FileUtil.lerDadosTXT();
+        transformaDados(dados);
+        JOptionPane.showMessageDialog(this, "Arquivo lido com sucesso!");
+    }
+
+    private void onClickedLerBIN() {
+        String dados = FileUtil.lerDadosBIN();
+        transformaDados(dados);
+        JOptionPane.showMessageDialog(this, "Arquivo lido com sucesso!");
+    }
+
+    private void onClickedLerDAT() {
+        String dados = FileUtil.lerDadosDAT();
+        transformaDados(dados);
+        JOptionPane.showMessageDialog(this, "Arquivo lido com sucesso!");
+    }
+
+    private void onClickedLerCSV() {
+        String dados = FileUtil.lerDadosCSV();
+        transformaDados(dados);
+        JOptionPane.showMessageDialog(this, "Arquivo lido com sucesso!");
     }
     
     private void setCliente() {
@@ -283,5 +327,30 @@ public class FrmCadastroArquivo extends javax.swing.JInternalFrame {
         return toReturn.toString();
     }
     
+    private void setDadosCampos(String nome, String endereco, String email, String dados) {
+        jTextFieldNome.setText(nome);
+        jTextFieldEndereco.setText(endereco);
+        jTextFieldEmail.setText(email);
+        jTextAreaDados.setText(dados);
+    }
+
+    private void transformaDados(String dados) {
+        int inicioNome = dados.indexOf("Nome=") + 5;
+        int inicioEndereco = dados.lastIndexOf("Endereço=");
+        int inicioEmail = dados.lastIndexOf("E-mail=");
+        
+        String nome = dados.substring(inicioNome, inicioEndereco);
+        String endereco = dados.substring(inicioEndereco + 9, inicioEmail);
+        String email = dados.substring(inicioEmail + 7, dados.length());
+        
+        setDadosCampos(nome, endereco, email, dados);
+    }
+    
+    private void limparCampos() {
+        jTextFieldNome.setText("");
+        jTextFieldEndereco.setText("");
+        jTextFieldEmail.setText("");
+        jTextAreaDados.setText("");
+    }
 
 }

@@ -164,7 +164,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
+        <Component class="javax.swing.JTextArea" name="jTextAreaDados">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -175,6 +175,7 @@
     <Component class="javax.swing.JButton" name="jButtonLerTXT">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ler TXT"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLerTXTActionPerformed"/>
@@ -183,7 +184,7 @@
     <Component class="javax.swing.JButton" name="jButtonLerBIN">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ler BIN"/>
-        <Property name="actionCommand" type="java.lang.String" value="Ler BIN"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLerBINActionPerformed"/>
@@ -192,6 +193,7 @@
     <Component class="javax.swing.JButton" name="jButtonLerDAT">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ler DAT"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLerDATActionPerformed"/>
@@ -200,6 +202,7 @@
     <Component class="javax.swing.JButton" name="jButtonLerCSV">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ler CSV"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLerCSVActionPerformed"/>
