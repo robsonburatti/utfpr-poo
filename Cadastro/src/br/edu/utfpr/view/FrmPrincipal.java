@@ -7,6 +7,7 @@ package br.edu.utfpr.view;
 
 import br.edu.utfpr.view.cadastro.FrmCadastroArquivo;
 import br.edu.utfpr.view.cadastro.FrmCadastroListas;
+import br.edu.utfpr.view.cadastro.FrmCadastroTreeView;
 import javax.swing.JFrame;
 
 /**
@@ -32,7 +33,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuBarPrincipal = new javax.swing.JMenuBar();
         jMenuArquivo = new javax.swing.JMenu();
         jMenuItemSalvarArquivo = new javax.swing.JMenuItem();
         jMenuItemSalvarBanco = new javax.swing.JMenuItem();
@@ -40,8 +41,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jMenuItemFechar = new javax.swing.JMenuItem();
         jMenuCadastro = new javax.swing.JMenu();
         jMenuItemClienteArquivo = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemCadastroBanco = new javax.swing.JMenuItem();
         jMenuItemCadastroListas = new javax.swing.JMenuItem();
+        jMenuItemCadstroTreeView = new javax.swing.JMenuItem();
         jMenuRelatorio = new javax.swing.JMenu();
         jMenuItemListaClienteArquivo = new javax.swing.JMenuItem();
         jMenuItemListaClienteBanco = new javax.swing.JMenuItem();
@@ -73,7 +75,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         jMenuArquivo.add(jMenuItemFechar);
 
-        jMenuBar1.add(jMenuArquivo);
+        jMenuBarPrincipal.add(jMenuArquivo);
 
         jMenuCadastro.setText("Cadastro");
 
@@ -86,9 +88,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         jMenuCadastro.add(jMenuItemClienteArquivo);
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem1.setText("Cliente Banco");
-        jMenuCadastro.add(jMenuItem1);
+        jMenuItemCadastroBanco.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemCadastroBanco.setText("Cliente Banco");
+        jMenuCadastro.add(jMenuItemCadastroBanco);
 
         jMenuItemCadastroListas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK));
         jMenuItemCadastroListas.setText("Cadastro Listas");
@@ -99,7 +101,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         jMenuCadastro.add(jMenuItemCadastroListas);
 
-        jMenuBar1.add(jMenuCadastro);
+        jMenuItemCadstroTreeView.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemCadstroTreeView.setText("Cadastro TreeView");
+        jMenuItemCadstroTreeView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCadstroTreeViewActionPerformed(evt);
+            }
+        });
+        jMenuCadastro.add(jMenuItemCadstroTreeView);
+
+        jMenuBarPrincipal.add(jMenuCadastro);
 
         jMenuRelatorio.setText("Relatório");
 
@@ -109,9 +120,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jMenuItemListaClienteBanco.setText("Lista Cliente Banco");
         jMenuRelatorio.add(jMenuItemListaClienteBanco);
 
-        jMenuBar1.add(jMenuRelatorio);
+        jMenuBarPrincipal.add(jMenuRelatorio);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBarPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,6 +152,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         onClickedCadastroListas();
     }//GEN-LAST:event_jMenuItemCadastroListasActionPerformed
+
+    private void jMenuItemCadstroTreeViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadstroTreeViewActionPerformed
+        // TODO add your handling code here:
+        onClickedCadastroTreeView();
+    }//GEN-LAST:event_jMenuItemCadstroTreeViewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,10 +195,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenuArquivo;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBarPrincipal;
     private javax.swing.JMenu jMenuCadastro;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemCadastroBanco;
     private javax.swing.JMenuItem jMenuItemCadastroListas;
+    private javax.swing.JMenuItem jMenuItemCadstroTreeView;
     private javax.swing.JMenuItem jMenuItemClienteArquivo;
     private javax.swing.JMenuItem jMenuItemConfiguracoes;
     private javax.swing.JMenuItem jMenuItemFechar;
@@ -213,6 +230,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         FrmCadastroListas frmCadastroListas = new FrmCadastroListas();
         this.add(frmCadastroListas);
         frmCadastroListas.setVisible(true);
+    }
+
+    private void onClickedCadastroTreeView() {
+        FrmCadastroTreeView frmCadastroTreeView = new FrmCadastroTreeView();
+        this.add(frmCadastroTreeView);
+        frmCadastroTreeView.setVisible(true);
     }
 
 }
