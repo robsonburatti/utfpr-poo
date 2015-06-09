@@ -42,8 +42,10 @@ public class FrmCadastroTreeView extends javax.swing.JInternalFrame implements T
         setClosable(true);
         setTitle("Cadastro TreeView");
 
+        jTextAreaDados.setEditable(false);
         jTextAreaDados.setColumns(20);
         jTextAreaDados.setRows(5);
+        jTextAreaDados.setEnabled(false);
         jScrollPane1.setViewportView(jTextAreaDados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
