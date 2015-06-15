@@ -37,6 +37,8 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Estado extends AbstractEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    // Adicionado para quem utiliza banco postgres adicionar a sequence do contador automático do banco de dados
+//    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "estado_idest_seq")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_estado")
