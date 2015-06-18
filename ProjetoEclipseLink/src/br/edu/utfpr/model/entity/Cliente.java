@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import mark.utils.el.annotation.Resolvable;
 
 /**
  *
@@ -40,20 +41,25 @@ public class Cliente extends AbstractEntity implements Serializable {
 //    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "cliente_idcli_seq")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_cliente")
+    @Column(nullable = false)
+    @Resolvable(colName = "Código")
     private Integer idCliente;
     @Basic(optional = false)
-    @Column(name = "nome")
+    @Column(nullable = false, length = 40)
+    @Resolvable(colName = "Nome")
     private String nome;
-    @Column(name = "telefone")
+    @Column(length = 15)
+    @Resolvable(colName = "Telefone")
     private String telefone;
-    @Column(name = "endereco")
+    @Column(length = 150)
+    @Resolvable(colName = "Endereço")
     private String endereco;
     @Basic(optional = false)
-    @Column(name = "ativo")
+    @Resolvable(colName = "Ativo")
     private boolean ativo;
     @JoinColumn(name = "id_cidade", referencedColumnName = "id_cidade")
     @ManyToOne(optional = false)
+    @Resolvable(colName = "Cidade")
     private Cidade idCidade;
 
     public Cliente() {

@@ -6,16 +6,24 @@
 package br.edu.utfpr.controller;
 
 import br.edu.utfpr.model.dao.AbstractDAO;
+import br.edu.utfpr.model.dao.ClienteDAO;
+import br.edu.utfpr.model.entity.Cliente;
 
 /**
  *
  * @author root
  */
-public class ClienteController extends AbstractController {
+public class ClienteController extends AbstractController<Cliente> {
 
+    private ClienteDAO dao;
+
+    public ClienteController() {
+        this.dao = new ClienteDAO();
+    }
+    
     @Override
     public AbstractDAO getDAO() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.dao;
     }
     
 }

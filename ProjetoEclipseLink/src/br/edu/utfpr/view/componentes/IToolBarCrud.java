@@ -3,14 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.utfpr.model.dao;
-
-import br.edu.utfpr.model.entity.Cliente;
+package br.edu.utfpr.view.componentes;
 
 /**
  *
  * @author root
  */
-public class ClienteDAO extends AbstractDAO<Cliente> {
+public interface IToolBarCrud {
+    
+    void novo();
+
+    void alterar();
+
+    void excluir();
+
+    void gravar();
+
+    void imprimir();
+
+    void cancelar();
     
 }
