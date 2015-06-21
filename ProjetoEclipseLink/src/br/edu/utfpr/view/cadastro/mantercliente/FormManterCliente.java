@@ -5,8 +5,12 @@
  */
 package br.edu.utfpr.view.cadastro.mantercliente;
 
+import br.edu.utfpr.controller.CidadeController;
 import br.edu.utfpr.controller.ClienteController;
+import br.edu.utfpr.controller.EstadoController;
+import br.edu.utfpr.model.entity.Cidade;
 import br.edu.utfpr.model.entity.Cliente;
+import br.edu.utfpr.model.entity.Estado;
 import br.edu.utfpr.view.componentes.IToolBarCrud;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -20,15 +24,16 @@ import mark.utils.swing.table.ObjectTableModel;
 public class FormManterCliente extends javax.swing.JInternalFrame implements IToolBarCrud {
 
     private ObjectTableModel objectTableModel;
-    
+
     /**
      * Creates new form FormManterCliente
      */
     public FormManterCliente() {
         initComponents();
-        
+
         toolBarCrudBarraMenu.setIToolBarCrud(this);
         carregaTabelaDados();
+        carregaListaEstado();
     }
 
     /**
@@ -116,23 +121,37 @@ public class FormManterCliente extends javax.swing.JInternalFrame implements ITo
         });
         jScrollPaneTabela.setViewportView(jTableDados);
 
-        jPanelDados.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
+        jPanelDados.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
         jPanelDados.setAutoscrolls(true);
 
         jLabelCodigo.setText("Código");
 
         jTextFieldCodigo.setEditable(false);
-        jTextFieldCodigo.setEnabled(false);
 
         jLabelNome.setText("Nome");
 
+        jTextFieldNome.setEditable(false);
+
         jLabelTelefone.setText("Telefone");
+
+        jTextFieldTelefone.setEditable(false);
 
         jLabelEndereco.setText("Endereço");
 
+        jTextFieldEndereco.setEditable(false);
+
         jLabelEstado.setText("Estado");
 
+        jComboBoxEstado.setEnabled(false);
+        jComboBoxEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxEstadoActionPerformed(evt);
+            }
+        });
+
         jLabelCidade.setText("Cidade");
+
+        jComboBoxCidade.setEnabled(false);
 
         javax.swing.GroupLayout jPanelDadosLayout = new javax.swing.GroupLayout(jPanelDados);
         jPanelDados.setLayout(jPanelDadosLayout);
@@ -146,10 +165,10 @@ public class FormManterCliente extends javax.swing.JInternalFrame implements ITo
                     .addComponent(jLabelCodigo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextFieldTelefone)
                     .addComponent(jTextFieldCodigo)
-                    .addComponent(jComboBoxEstado, 0, 80, Short.MAX_VALUE))
-                .addGap(24, 24, 24)
+                    .addComponent(jTextFieldTelefone)
+                    .addComponent(jComboBoxEstado, 0, 95, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelNome)
                     .addComponent(jLabelEndereco)
@@ -157,8 +176,8 @@ public class FormManterCliente extends javax.swing.JInternalFrame implements ITo
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldNome)
-                    .addComponent(jTextFieldEndereco)
-                    .addComponent(jComboBoxCidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jComboBoxCidade, 0, 106, Short.MAX_VALUE)
+                    .addComponent(jTextFieldEndereco))
                 .addContainerGap())
         );
         jPanelDadosLayout.setVerticalGroup(
@@ -224,6 +243,10 @@ public class FormManterCliente extends javax.swing.JInternalFrame implements ITo
         }
     }//GEN-LAST:event_jTableDadosMouseClicked
 
+    private void jComboBoxEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEstadoActionPerformed
+        carregaListaCidade((Estado) jComboBoxEstado.getSelectedItem());
+    }//GEN-LAST:event_jComboBoxEstadoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBusca;
@@ -251,22 +274,62 @@ public class FormManterCliente extends javax.swing.JInternalFrame implements ITo
 
     @Override
     public void novo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        limparCampos();
+        setEnabledComponentes(true);
     }
 
     @Override
     public void alterar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        setEnabledComponentes(true);
     }
 
     @Override
     public void excluir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int linha = jTableDados.getSelectedRow();
+
+        if (jTableDados.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Nenhum um registro selecionado. Favor selecionar pelo menos um registro.");
+        } else {
+            Cliente cliente = (Cliente) objectTableModel.getValue(linha);
+
+            if (JOptionPane.showConfirmDialog(this, "Tem certeza que deseja excluir o registro:\n" + cliente.getNome(), "Confirmação", JOptionPane.YES_NO_OPTION) == 0) {
+                ClienteController clienteController = new ClienteController();
+                clienteController.apagar(cliente);
+                carregaTabelaDados();
+                JOptionPane.showMessageDialog(this, "Excluido com sucesso.");
+            }
+        }
     }
 
     @Override
     public void gravar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClienteController clienteController = new ClienteController();
+        Cliente cliente = new Cliente();
+
+        if (validaCampos()) {
+            if (!jTextFieldCodigo.getText().equals("")) {
+                cliente.setIdCliente(Integer.parseInt(jTextFieldCodigo.getText()));
+            }
+            
+            cliente.setNome(jTextFieldNome.getText());
+            cliente.setTelefone(jTextFieldTelefone.getText());
+            cliente.setEndereco(jTextFieldEndereco.getText());
+            cliente.setIdCidade((Cidade) jComboBoxCidade.getSelectedItem());
+            
+            clienteController.gravar(cliente);
+            
+            limparCampos();
+
+            carregaTabelaDados();
+
+            setEnabledComponentes(false);
+
+            toolBarCrudBarraMenu.isGravar = true;
+            
+            JOptionPane.showMessageDialog(this, "Dados gravados com sucesso.");
+        } else {
+            toolBarCrudBarraMenu.isGravar = false;
+        }
     }
 
     @Override
@@ -276,17 +339,18 @@ public class FormManterCliente extends javax.swing.JInternalFrame implements ITo
 
     @Override
     public void cancelar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        setEnabledComponentes(false);
+        limparCampos();
     }
-    
+
     private ObjectTableModel carregaTabelaDados() {
-//        limparCampos();
+        limparCampos();
         ClienteController clienteCon = new ClienteController();
 
         List<Cliente> listCliente = null;
 
         AnnotationResolver annotationResolver = new AnnotationResolver(Cliente.class);
-        objectTableModel = new ObjectTableModel(annotationResolver, "idCliente,nome,telefone,endereco,idCidade");
+        objectTableModel = new ObjectTableModel(annotationResolver, "id_Cliente,nome,telefone,endereco,idCidade");
 //        jTableDados.setModel(objectTableModel);
 
         if (jTextFieldBusca.getText().equals("") || jTextFieldBusca == null) {
@@ -316,9 +380,86 @@ public class FormManterCliente extends javax.swing.JInternalFrame implements ITo
             return objectTableModel;
         }
     }
-    
+
     private void carregarCampos(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        jTextFieldCodigo.setText(cliente.getIdCliente().toString());
+        jTextFieldNome.setText(cliente.getNome());
+        jTextFieldTelefone.setText(cliente.getTelefone());
+        jTextFieldEndereco.setText(cliente.getEndereco());
+        jComboBoxEstado.setSelectedItem(cliente.getIdCidade().getIdEstado());
+        jComboBoxCidade.setSelectedItem(cliente.getIdCidade());
+
     }
-    
+
+    private void carregaListaCidade(Estado estado) {
+        CidadeController cidadeController = new CidadeController();
+
+        List<Cidade> listCidade = null;
+        
+        if (estado == null) {
+            listCidade = cidadeController.getAll();
+        } else {
+            listCidade = estado.getCidadeList();
+        }
+        
+        jComboBoxCidade.removeAllItems();
+        
+        for (Cidade cidade : listCidade) {
+            jComboBoxCidade.addItem(cidade);
+        }
+    }
+
+    private void carregaListaEstado() {
+        EstadoController estadoController = new EstadoController();
+
+        List<Estado> listEstado = estadoController.getAll();
+        // Poderia ser desta forma, pega o valor do toString() da entidade
+//        jComboBoxEstado.setModel( new DefaultComboBoxModel(listEstado.toArray()));
+//        jComboBoxEstado.setEnabled(false);
+        for (Estado estado : listEstado) {
+            jComboBoxEstado.addItem(estado);
+        }
+    }
+
+    private void setEnabledComponentes(boolean isEnabled) {
+        jTextFieldNome.setEditable(isEnabled);
+        jTextFieldTelefone.setEditable(isEnabled);
+        jTextFieldEndereco.setEditable(isEnabled);
+        jComboBoxEstado.setEnabled(isEnabled);
+        jComboBoxCidade.setEnabled(isEnabled);
+    }
+
+    private void limparCampos() {
+        jTextFieldCodigo.setText("");
+        jTextFieldNome.setText("");
+        jTextFieldTelefone.setText("");
+        jTextFieldEndereco.setText("");
+    }
+
+    private boolean validaCampos() {
+        boolean isValidado = true;
+        
+        if ((jTextFieldNome == null) || (jTextFieldNome.getText().equals(""))) {
+            JOptionPane.showMessageDialog(this, "O campo '" + jTextFieldNome.getName() + "' não está preenchido corretamente.\nFavor Verificar.", "Atenção", JOptionPane.ERROR_MESSAGE);
+            isValidado = false;
+        }
+        
+        if ((jTextFieldTelefone == null) || (jTextFieldTelefone.getText().equals(""))) {
+            JOptionPane.showMessageDialog(this, "O campo '" + jTextFieldTelefone.getName() + "' não está preenchido corretamente.\nFavor Verificar.", "Atenção", JOptionPane.ERROR_MESSAGE);
+            isValidado = false;
+        }
+        
+        if ((jTextFieldEndereco == null) || (jTextFieldEndereco.getText().equals(""))) {
+            JOptionPane.showMessageDialog(this, "O campo '" + jTextFieldEndereco.getName() + "' não está preenchido corretamente.\nFavor Verificar.", "Atenção", JOptionPane.ERROR_MESSAGE);
+            isValidado = false;
+        }
+        
+        if ((jComboBoxCidade == null) || (jComboBoxCidade.getSelectedItem() == null) || (jComboBoxCidade.getSelectedItem().equals(""))) {
+            JOptionPane.showMessageDialog(this, "O campo '" + jComboBoxCidade.getName() + "' não está preenchido corretamente.\nFavor Verificar.", "Atenção", JOptionPane.ERROR_MESSAGE);
+            isValidado = false;
+        }
+        
+        return isValidado;
+    }
+
 }

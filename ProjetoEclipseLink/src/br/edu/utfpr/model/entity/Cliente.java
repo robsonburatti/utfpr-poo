@@ -29,7 +29,7 @@ import mark.utils.el.annotation.Resolvable;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
-    @NamedQuery(name = "Cliente.findByIdCliente", query = "SELECT c FROM Cliente c WHERE c.idCliente = :idCliente"),
+    @NamedQuery(name = "Cliente.findByIdCliente", query = "SELECT c FROM Cliente c WHERE c.id_Cliente = :idCliente"),
     @NamedQuery(name = "Cliente.findByNome", query = "SELECT c FROM Cliente c WHERE c.nome = :nome"),
     @NamedQuery(name = "Cliente.findByTelefone", query = "SELECT c FROM Cliente c WHERE c.telefone = :telefone"),
     @NamedQuery(name = "Cliente.findByEndereco", query = "SELECT c FROM Cliente c WHERE c.endereco = :endereco"),
@@ -43,7 +43,7 @@ public class Cliente extends AbstractEntity implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     @Resolvable(colName = "Código")
-    private Integer idCliente;
+    private Integer id_Cliente;
     @Basic(optional = false)
     @Column(nullable = false, length = 40)
     @Resolvable(colName = "Nome")
@@ -54,11 +54,10 @@ public class Cliente extends AbstractEntity implements Serializable {
     @Column(length = 150)
     @Resolvable(colName = "Endereço")
     private String endereco;
-    @Basic(optional = false)
     @Resolvable(colName = "Ativo")
-    private boolean ativo;
+    private Boolean ativo;
     @JoinColumn(name = "id_cidade", referencedColumnName = "id_cidade")
-    @ManyToOne(optional = false)
+    @ManyToOne
     @Resolvable(colName = "Cidade")
     private Cidade idCidade;
 
@@ -66,21 +65,21 @@ public class Cliente extends AbstractEntity implements Serializable {
     }
 
     public Cliente(Integer idCliente) {
-        this.idCliente = idCliente;
+        this.id_Cliente = idCliente;
     }
 
     public Cliente(Integer idCliente, String nome, boolean ativo) {
-        this.idCliente = idCliente;
+        this.id_Cliente = idCliente;
         this.nome = nome;
         this.ativo = ativo;
     }
 
     public Integer getIdCliente() {
-        return idCliente;
+        return id_Cliente;
     }
 
     public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
+        this.id_Cliente = idCliente;
     }
 
     public String getNome() {
@@ -126,7 +125,7 @@ public class Cliente extends AbstractEntity implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idCliente != null ? idCliente.hashCode() : 0);
+        hash += (id_Cliente != null ? id_Cliente.hashCode() : 0);
         return hash;
     }
 
@@ -137,7 +136,7 @@ public class Cliente extends AbstractEntity implements Serializable {
             return false;
         }
         Cliente other = (Cliente) object;
-        if ((this.idCliente == null && other.idCliente != null) || (this.idCliente != null && !this.idCliente.equals(other.idCliente))) {
+        if ((this.id_Cliente == null && other.id_Cliente != null) || (this.id_Cliente != null && !this.id_Cliente.equals(other.id_Cliente))) {
             return false;
         }
         return true;
@@ -145,7 +144,7 @@ public class Cliente extends AbstractEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.utfpr.model.entity.Cliente[ idCliente=" + idCliente + " ]";
+        return "br.edu.utfpr.model.entity.Cliente[ idCliente=" + id_Cliente + " ]";
     }
 
     @Override

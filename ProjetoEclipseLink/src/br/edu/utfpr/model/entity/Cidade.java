@@ -132,7 +132,7 @@ public class Cidade extends AbstractEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.utfpr.model.entity.Cidade[ idCidade=" + idCidade + " ]";
+        return this.getCidade();
     }
 
     @Override

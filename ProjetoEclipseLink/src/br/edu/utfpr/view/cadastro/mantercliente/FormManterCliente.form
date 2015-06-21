@@ -138,7 +138,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Dados"/>
+            <TitledBorder position="2" title="Dados"/>
           </Border>
         </Property>
         <Property name="autoscrolls" type="boolean" value="true"/>
@@ -156,11 +156,11 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jTextFieldTelefone" max="32767" attributes="0"/>
-                      <Component id="jTextFieldCodigo" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jComboBoxEstado" alignment="0" pref="80" max="32767" attributes="0"/>
+                      <Component id="jTextFieldCodigo" max="32767" attributes="0"/>
+                      <Component id="jTextFieldTelefone" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jComboBoxEstado" alignment="0" pref="95" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jLabelNome" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelEndereco" min="-2" max="-2" attributes="0"/>
@@ -169,8 +169,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jTextFieldNome" max="32767" attributes="0"/>
-                      <Component id="jTextFieldEndereco" max="32767" attributes="0"/>
-                      <Component id="jComboBoxCidade" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jComboBoxCidade" alignment="0" pref="106" max="32767" attributes="0"/>
+                      <Component id="jTextFieldEndereco" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -213,7 +213,6 @@
         <Component class="javax.swing.JTextField" name="jTextFieldCodigo">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelNome">
@@ -222,6 +221,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldNome">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelTelefone">
           <Properties>
@@ -229,6 +231,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldTelefone">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelEndereco">
           <Properties>
@@ -236,6 +241,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldEndereco">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelEstado">
           <Properties>
@@ -247,7 +255,11 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxEstadoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCidade">
           <Properties>
@@ -259,6 +271,7 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
       </SubComponents>

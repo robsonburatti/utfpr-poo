@@ -132,7 +132,7 @@ public class Estado extends AbstractEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.utfpr.model.entity.Estado[ idEstado=" + idEstado + " ]";
+        return this.getEstado() + " - " + this.getUf();
     }
 
     @Override
